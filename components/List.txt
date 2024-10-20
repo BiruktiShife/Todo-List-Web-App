@@ -1,0 +1,18 @@
+"use client";
+import SignInBtn from "./SignInBtn";
+import { useSession } from "next-auth/react";
+import { TopicsComponent } from "./topics";
+
+export default function List() {
+  const { status, data: session } = useSession();
+
+  if (status === "authenticated") {
+    return (
+      <>
+        <TopicsComponent />
+      </>
+    );
+  } else {
+    return <SignInBtn />;
+  }
+}
